@@ -778,15 +778,15 @@ MonoBehaviour:
   - Name: MainMenu
     Clip: {fileID: 8300000, guid: 4ad0bfa68d780d6418087f27487d3ab7, type: 3}
     Volume: 0.613
-    Pitch: 0
-    Loop: 0
+    Pitch: 1.14
+    Loop: 1
     AudioMixerGroup: {fileID: 24300002, guid: db251c625c93b174c952e0d79b675096, type: 2}
     Source: {fileID: 0}
   - Name: InGame
     Clip: {fileID: 8300000, guid: 2053ccac2d344cf4583e21f08bc3672d, type: 3}
     Volume: 0.613
-    Pitch: 0
-    Loop: 0
+    Pitch: 1.46
+    Loop: 1
     AudioMixerGroup: {fileID: 24300002, guid: db251c625c93b174c952e0d79b675096, type: 2}
     Source: {fileID: 0}
   VolumeSlider: {fileID: 1234699748}
@@ -1175,7 +1175,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 899091894}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: VolumeChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1245360256
 GameObject:
   m_ObjectHideFlags: 0
