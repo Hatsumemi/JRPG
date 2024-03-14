@@ -2,14 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
+using UnityEngine.UI;
 
 public class GamesMenu : MonoBehaviour
 {
     public Canvas Settings;
+    public Image Fade;
+
+    private void Start()
+    {
+        Fade.DOFade(0, 2);
+        StartCoroutine(WaitToBegin());
+    }
 
     public void OnClickStart()
     {
-        SceneManager.LoadScene("MainGame");
+        Fade.gameObject.SetActive(true);
+        Fade.DOFade(1, 2);
+        StartCoroutine (WaitToStart());
     }
 
     public void OnClickSettings()
@@ -35,5 +46,17 @@ public class GamesMenu : MonoBehaviour
     public void OnClickBack()
     {
         Settings.gameObject.SetActive(false);
+    }
+
+    IEnumerator WaitToBegin()
+    {
+        yield return new WaitForSeconds(2);
+        Fade.gameObject.SetActive(false);
+    }
+
+    IEnumerator WaitToStart()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("MainGame");
     }
 }
