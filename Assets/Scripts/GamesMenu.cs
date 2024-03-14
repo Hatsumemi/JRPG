@@ -19,7 +19,7 @@ public class GamesMenu : MonoBehaviour
     public void OnClickStart()
     {
         Fade.gameObject.SetActive(true);
-        Fade.DOFade(1, 2);
+        Fade.DOFade(1, 1);
         StartCoroutine (WaitToStart());
     }
 
@@ -56,7 +56,7 @@ public class GamesMenu : MonoBehaviour
 
     IEnumerator WaitToStart()
     {
-        yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("MainGame");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("PlayerChoices");
     }
 }

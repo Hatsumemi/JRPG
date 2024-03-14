@@ -13,7 +13,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
-        Fade.DOFade(0, 2);
+        Fade.DOFade(0, 1);
         StartCoroutine(WaitToStart());
     }
 
@@ -47,7 +47,7 @@ public class PauseMenu : MonoBehaviour
     public void OnClickRestart()
     {
         Fade.gameObject.SetActive(true);
-        Fade.DOFade(1, 2);
+        Fade.DOFade(1, 1);
         Pause.gameObject.SetActive(false);
         Time.timeScale = 1.0f;
         StartCoroutine(WaitToRestart());
@@ -56,7 +56,8 @@ public class PauseMenu : MonoBehaviour
     public void OnClickQuit()
     {
         Fade.gameObject.SetActive(true);
-        Fade.DOFade(1, 2);
+        Fade.DOFade(1, 1);
+        Pause.gameObject.SetActive(false);
         Time.timeScale = 1f;
     }
 
@@ -68,19 +69,19 @@ public class PauseMenu : MonoBehaviour
 
     IEnumerator WaitToStart()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         Fade.gameObject.SetActive(false);
     }
 
     IEnumerator WaitToRestart()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene("MainGame");
     }
 
     IEnumerator WaitToMenu()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene("MainMenu");
     }
 }
