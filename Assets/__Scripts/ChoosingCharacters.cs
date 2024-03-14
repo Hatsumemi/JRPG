@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class ChoosingCharacters : MonoBehaviour
 {
     public GameObject Character01;
     public GameObject Character02;
-
-    bool _character01 = false;
-    bool _character02 = false;
 
     public Sprite WarriorImage;
     public Sprite PaladinImage;
@@ -18,8 +17,16 @@ public class ChoosingCharacters : MonoBehaviour
     public Sprite MageImage;
     public Sprite BowmanImage;
 
+    public Image Fade;
+
+    bool _character01 = false;
+    bool _character02 = false;
+
+
     private void Start()
     {
+        Fade.DOFade(0, 1);
+        StartCoroutine(WaitToChoose());
         PlayerPrefs.SetString("character01", "warrior");
         PlayerPrefs.SetString("character02", "bowman");
     }
@@ -34,6 +41,13 @@ public class ChoosingCharacters : MonoBehaviour
     {
         _character01 = false;
         _character02 = true;
+    }
+
+    public void Validate()
+    {
+        Fade.gameObject.SetActive(true);
+        Fade.DOFade(1,1);
+        StartCoroutine(WaitForStart());
     }
 
     public void Warrior()
@@ -104,5 +118,18 @@ public class ChoosingCharacters : MonoBehaviour
             Character02.gameObject.GetComponent<Image>().sprite = BowmanImage;
             PlayerPrefs.SetString("character02", "bowman");
         }
+    }
+
+
+    IEnumerator WaitToChoose()
+    {
+        yield return new WaitForSeconds(1);
+        Fade.gameObject.SetActive(false);
+    }
+
+    IEnumerator WaitForStart()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("MainGame");
     }
 }
