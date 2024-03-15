@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1046471543}
     m_Modifications:
+    - target: {fileID: 1856810758974845656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 460fafe581872b042a5f006230218447, type: 3}
     - target: {fileID: 5190369154935643713, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
       propertyPath: m_Name
       value: SettingsButton
@@ -169,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5952728319645032293, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 87.4461
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5952728319645032293, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
       propertyPath: m_LocalPosition.x
@@ -232,6 +236,22 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c897b404997404a4793c9007d7ee82b9, type: 3}
+    - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c897b404997404a4793c9007d7ee82b9, type: 3}
+    - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c897b404997404a4793c9007d7ee82b9, type: 3}
+    - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1806575491}
@@ -266,6 +286,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1046471543}
     m_Modifications:
+    - target: {fileID: 1856810758974845656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 460fafe581872b042a5f006230218447, type: 3}
     - target: {fileID: 5190369154935643713, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
       propertyPath: m_Name
       value: ResumeButton
@@ -304,7 +328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5952728319645032293, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 87.4461
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5952728319645032293, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
       propertyPath: m_LocalPosition.x
@@ -368,6 +392,22 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c897b404997404a4793c9007d7ee82b9, type: 3}
+    - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c897b404997404a4793c9007d7ee82b9, type: 3}
+    - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c897b404997404a4793c9007d7ee82b9, type: 3}
     - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1906,7 +1946,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1046471540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2306,6 +2346,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1046471543}
     m_Modifications:
+    - target: {fileID: 1856810758974845656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 460fafe581872b042a5f006230218447, type: 3}
     - target: {fileID: 5190369154935643713, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
       propertyPath: m_Name
       value: QuitButton
@@ -2344,7 +2388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5952728319645032293, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 87.4461
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5952728319645032293, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2408,6 +2452,22 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c897b404997404a4793c9007d7ee82b9, type: 3}
+    - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c897b404997404a4793c9007d7ee82b9, type: 3}
+    - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c897b404997404a4793c9007d7ee82b9, type: 3}
     - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2927,6 +2987,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1046471543}
     m_Modifications:
+    - target: {fileID: 1856810758974845656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 460fafe581872b042a5f006230218447, type: 3}
     - target: {fileID: 5190369154935643713, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
       propertyPath: m_Name
       value: RestartButton
@@ -2965,7 +3029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5952728319645032293, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 87.4461
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5952728319645032293, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3027,6 +3091,22 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c897b404997404a4793c9007d7ee82b9, type: 3}
+    - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c897b404997404a4793c9007d7ee82b9, type: 3}
+    - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c897b404997404a4793c9007d7ee82b9, type: 3}
     - target: {fileID: 7989470019933962656, guid: 0d2e8cf067d44d541895403ee28a7996, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
