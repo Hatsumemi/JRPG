@@ -27,8 +27,8 @@ public class ChoosingCharacters : MonoBehaviour
     {
         Fade.DOFade(0, 1);
         StartCoroutine(WaitToChoose());
-        PlayerPrefs.SetString("character01", "warrior");
-        PlayerPrefs.SetString("character02", "bowman");
+        PlayerPrefs.SetString("character01", "Warrior");
+        PlayerPrefs.SetString("character02", "Bowman");
     }
 
     public void Char01Choosed()

@@ -49,6 +49,7 @@ public class Ally : Character
             Debug.LogWarning("You should not hit your allies");
             return;
         }
+        PlayerPrefs.SetInt("damage", 10);
         base.Attack(defender);
     }
 
@@ -61,6 +62,7 @@ public class Ally : Character
             Debug.LogWarning("You should not hit your allies");
             return;
         }
+        PlayerPrefs.SetInt("damage", 30);
         base.SpecialAttack(defender);
     }
 
@@ -73,6 +75,7 @@ public class Ally : Character
             Debug.LogWarning("You should not hit your allies");
             return;
         }
+        PlayerPrefs.SetInt("damage", 70);
         base.Ulti(defender);
     }
 

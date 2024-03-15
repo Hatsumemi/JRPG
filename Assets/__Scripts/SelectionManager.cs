@@ -33,7 +33,15 @@ public class SelectionManager : MonoBehaviour
                 if (!hit.collider.TryGetComponent<Character>(out var character)) return;
                 if (CurrentSelectionMode == SelectionMode.EnemyToAttack)
                 {
-                    if (_selectedCharacter.GetType() == typeof(Ally)) ((Ally)_selectedCharacter).Attack(character);
+                    if (_selectedCharacter.GetType() == typeof(Ally))
+                    {
+                        if (PlayerPrefs.GetString("attackType") == "Attack")
+                            ((Ally)_selectedCharacter).Attack(character);
+                        else if (PlayerPrefs.GetString("attackType") == "SpecialAttack")
+                            ((Ally)_selectedCharacter).SpecialAttack(character);
+                        else if (PlayerPrefs.GetString("attackType") == "Ulti")
+                            ((Ally)_selectedCharacter).Ulti(character);
+                    }
                 }
                 SelectCharacter(character);
             }
@@ -62,7 +70,24 @@ public class SelectionManager : MonoBehaviour
     public void SetAttackMode()
     {
         if (_selectedCharacter == null || _selectedCharacter.GetType() == typeof(Enemy)) return;
+        PlayerPrefs.SetString("attackType", "Attack");
         CurrentSelectionMode = SelectionMode.EnemyToAttack;
+        UI.UpdateUI(instructionText: GetSelectionInstructionsText(CurrentSelectionMode));
+    }
+
+    public void SetSpecialAttackMode()
+    {
+        if (_selectedCharacter == null || _selectedCharacter.GetType() == typeof(Enemy)) return;
+        PlayerPrefs.SetString("attackType", "SpecialAttack");
+        CurrentSelectionMode = SelectionMode.EnemyToAttack;
+        UI.UpdateUI(instructionText: GetSelectionInstructionsText(CurrentSelectionMode));
+    }
+
+    public void SetUltiMode()
+    {
+        if (_selectedCharacter == null || _selectedCharacter.GetType() == typeof(Enemy)) return;
+        PlayerPrefs.SetString("attackType", "Ulti");
+        CurrentSelectionMode = SelectionMode.Default;
         UI.UpdateUI(instructionText: GetSelectionInstructionsText(CurrentSelectionMode));
     }
 

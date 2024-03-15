@@ -2,6 +2,8 @@
 {
     Default,
     EnemyToAttack,
+    SpecialAttack,
+    UltimateAttack,
     Heal,
     EnemyTurn
 }
