@@ -4113,6 +4113,8 @@ MonoBehaviour:
   - SelectionMode: 1
     SelectionInstructionsText: Please select an enemy to attack them.
   - SelectionMode: 2
+    SelectionInstructionsText: Please select an ally to heal.
+  - SelectionMode: 3
     SelectionInstructionsText: Please wait your turn.
 --- !u!4 &1806575488
 Transform:
