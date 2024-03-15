@@ -52,6 +52,30 @@ public class Ally : Character
         base.Attack(defender);
     }
 
+    internal override void SpecialAttack(Character defender)
+    {
+        if (HasAttackedThisTurnOrIsStuned) return;
+        print(defender.GetType());
+        if (defender.GetType() == typeof(Ally))
+        {
+            Debug.LogWarning("You should not hit your allies");
+            return;
+        }
+        base.SpecialAttack(defender);
+    }
+
+    internal override void Ulti(Character defender)
+    {
+        if (HasAttackedThisTurnOrIsStuned) return;
+        print(defender.GetType());
+        if (defender.GetType() == typeof(Ally))
+        {
+            Debug.LogWarning("You should not hit your allies");
+            return;
+        }
+        base.Ulti(defender);
+    }
+
     internal override void Hit(int damage)
     {
         base.Hit(damage);

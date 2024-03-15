@@ -41,8 +41,32 @@ public class Character : MonoBehaviour
         if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: NormalAttackDamage);
         else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: NormalAttackDamage);
     }
+
+    virtual internal void SpecialAttack(Character defender)
+    {
+        print($"{name} is using their special attack {defender.name} of type {defender.GetType()}");
+        CharacterAnimator.SetTrigger("special");
+
+        TurnManager.Instance.HasAttacked(this);
+
+        if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: NormalAttackDamage);
+        else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: NormalAttackDamage);
+    }
+
+    virtual internal void Ulti(Character defender)
+    {
+        print($"{name} is using their ult {defender.name} of type {defender.GetType()}");
+        CharacterAnimator.SetTrigger("ult");
+
+        TurnManager.Instance.HasAttacked(this);
+
+        if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: NormalAttackDamage);
+        else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: NormalAttackDamage);
+    }
+
     virtual internal void Hit(int damage)
     {
         print($"{name} is hit and took {damage} damages");
+        CharacterAnimator.SetTrigger("hit");
     }
 }
