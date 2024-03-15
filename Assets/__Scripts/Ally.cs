@@ -11,6 +11,8 @@ public class Ally : Character
 
     private void Start()
     {
+        LoadVisu01();
+        LoadVisu02();
         Character visu = GetComponent<Character>();
 
         if (gameObject.name == "Character01")
@@ -20,6 +22,7 @@ public class Ally : Character
             Animator _toShow01A = _chara01.GetComponent<Animator>();
             if (_toShow01SR.name == _visuChoosed01) 
             {
+                _chara01.gameObject.SetActive(true);
                 visu.Visual = _toShow01SR;
                 visu.CharacterAnimator = _toShow01A;
             }
@@ -56,13 +59,13 @@ public class Ally : Character
         Life = Mathf.Clamp(Life - damage, 0, LifeMax);
     }
 
-    private void LoadVisu()
+    private void LoadVisu01()
     {
         _visuChoosed01 = PlayerPrefs.GetString("character01");
     }
 
-    private void LoadAnim()
+    private void LoadVisu02()
     {
-        _visuChoosed01 = PlayerPrefs.GetString("character02");
+        _visuChoosed02 = PlayerPrefs.GetString("character02");
     }
 }
