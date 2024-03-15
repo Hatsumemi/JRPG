@@ -55,12 +55,12 @@ public class ChoosingCharacters : MonoBehaviour
         if (_character01)
         {
             Character01.gameObject.GetComponent<Image>().sprite = WarriorImage;
-            PlayerPrefs.SetString("character01", "warrior");
+            PlayerPrefs.SetString("character01", "Warrior");
         }
         if (_character02)
         {
             Character02.gameObject.GetComponent<Image>().sprite = WarriorImage;
-            PlayerPrefs.SetString("character02", "warrior");
+            PlayerPrefs.SetString("character02", "Warrior");
         }
     }
 
@@ -69,12 +69,12 @@ public class ChoosingCharacters : MonoBehaviour
         if (_character01)
         {
             Character01.gameObject.GetComponent<Image>().sprite = PaladinImage;
-            PlayerPrefs.SetString("character01", "paladin");
+            PlayerPrefs.SetString("character01", "Paladin");
         }
         if (_character02)
         {
             Character02.gameObject.GetComponent<Image>().sprite = PaladinImage;
-            PlayerPrefs.SetString("character02", "paladin");
+            PlayerPrefs.SetString("character02", "Paladin");
         }
     }
 
@@ -83,12 +83,12 @@ public class ChoosingCharacters : MonoBehaviour
         if (_character01)
         {
             Character01.gameObject.GetComponent<Image>().sprite = WizzardImage;
-            PlayerPrefs.SetString("character01", "wizzard");
+            PlayerPrefs.SetString("character01", "Wizzard");
         }
         if (_character02)
         {
             Character02.gameObject.GetComponent<Image>().sprite = WizzardImage;
-            PlayerPrefs.SetString("character02", "wizzard");
+            PlayerPrefs.SetString("character02", "Wizzard");
         }
     }
 
@@ -97,12 +97,12 @@ public class ChoosingCharacters : MonoBehaviour
         if (_character01)
         {
             Character01.gameObject.GetComponent<Image>().sprite = MageImage;
-            PlayerPrefs.SetString("character01", "mage");
+            PlayerPrefs.SetString("character01", "Mage");
         }
         if (_character02)
         {
             Character02.gameObject.GetComponent<Image>().sprite = MageImage;
-            PlayerPrefs.SetString("character02", "mage");
+            PlayerPrefs.SetString("character02", "Mage");
         }
     }
 
@@ -111,12 +111,12 @@ public class ChoosingCharacters : MonoBehaviour
         if (_character01)
         {
             Character01.gameObject.GetComponent<Image>().sprite = BowmanImage;
-            PlayerPrefs.SetString("character01", "bowman");
+            PlayerPrefs.SetString("character01", "Bowman");
         }
         if (_character02)
         {
             Character02.gameObject.GetComponent<Image>().sprite = BowmanImage;
-            PlayerPrefs.SetString("character02", "bowman");
+            PlayerPrefs.SetString("character02", "Bowman");
         }
     }
 
