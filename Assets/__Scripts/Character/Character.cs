@@ -1,10 +1,15 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
+using TMPro;
+using UnityEngine.UI;
 
 [Serializable]
 public class Character : MonoBehaviour
 {
+    public GameObject PrefabHitPoint;
+    public GameObject WhereToShowHP;
     public int LifeMax = 100;
     public int Life = 100;
     public Sprite SpritePortrait;
@@ -168,6 +173,13 @@ public class Character : MonoBehaviour
         CharacterAnimator.SetTrigger("hit");
     }
 
+    public void ShowHitPoint(int damage)
+    {
+        GameObject prefab = GameObject.Instantiate(PrefabHitPoint);
+        prefab.transform.position = WhereToShowHP.transform.position;
+        prefab.GetComponent<Text>().DOFade(0, 0.8f);
+    }
+    
     IEnumerator WaitToHit(Character defender)
     {
         if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: UltimateAttackDamage);

@@ -282,9 +282,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d321471d8c27aa4d967f4db51023b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PrefabHitPoint: {fileID: 7435507357748056878, guid: e531c9908c684b94b855c3279216d8f2, type: 3}
+  WhereToShowHP: {fileID: 9064656913145065904}
   LifeMax: 100
   Life: 100
   SpritePortrait: {fileID: 3800871404644214177, guid: aae616819c34de14996632200276507c, type: 3}
   Visual: {fileID: 7653876479534562199}
   CharacterAnimator: {fileID: 9122667785458126137}
   NormalAttackDamage: 10
+  SpecialAttackDamage: 30
+  UltimateAttackDamage: 60
+  CanAttackColor: {r: 1, g: 1, b: 1, a: 1}
+  StandByColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  SpecialAttacks: 

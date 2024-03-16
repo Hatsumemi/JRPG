@@ -2,11 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+
 public class TurnManager : MonoBehaviour
 {
+    
     private Ally Ally;
     private static TurnManager _instance;
     public static TurnManager Instance { get { return _instance; } }
@@ -85,4 +88,6 @@ public class TurnManager : MonoBehaviour
         }
         return res;
     }
+    
+    
 }
