@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class TurnManager : MonoBehaviour
 {
@@ -12,16 +13,16 @@ public class TurnManager : MonoBehaviour
     {
         if (_instance == null) _instance = this;
     }
-    [SerializeField] private List<Ally> _allies;
+    [FormerlySerializedAs("_allies")] public List<Ally> Allies;
     [SerializeField] private List<Enemy> _enemies;
     private int _turnCount = 0;
     private bool _isEnemiesTurn = false;
 
     void Start()
     {
-        _allies = new List<Ally>(FindObjectsByType<Ally>(FindObjectsSortMode.InstanceID));
+        Allies = new List<Ally>(FindObjectsByType<Ally>(FindObjectsSortMode.InstanceID));
         _enemies = new List<Enemy>(FindObjectsByType<Enemy>(FindObjectsSortMode.InstanceID));
-        foreach (Ally ally in _allies) { ally.HasAttackedThisTurnOrIsStuned = false; }
+        foreach (Ally ally in Allies) { ally.HasAttackedThisTurnOrIsStuned = false; }
         foreach (Enemy enemy in _enemies) { enemy.HasAttackedThisTurnOrIsStuned = false; }
     }
     private void Update()
@@ -38,8 +39,8 @@ public class TurnManager : MonoBehaviour
     private void AttackRandomAlly(Enemy enemy)
     {
         if (enemy.HasAttackedThisTurnOrIsStuned) return;
-        int index = UnityEngine.Random.Range(0, _allies.Count);
-        enemy.Attack(_allies[index]);
+        int index = UnityEngine.Random.Range(0, Allies.Count);
+        enemy.Attack(Allies[index]);
     }
 
     public bool HasAttacked<T>(T character) where T : Character
@@ -62,12 +63,12 @@ public class TurnManager : MonoBehaviour
     private bool AlliesHaveEndedTheirTurn()
     {
         bool res = true;
-        foreach (Ally ally in _allies) { res = res && ally.HasAttackedThisTurnOrIsStuned; }
+        foreach (Ally ally in Allies) { res = res && ally.HasAttackedThisTurnOrIsStuned; }
         if (res)
         {
             SelectionManager.Instance.CurrentSelectionMode = SelectionMode.EnemyTurn;
             _isEnemiesTurn = true;
-            foreach (Ally ally in _allies) { ally.HasAttackedThisTurnOrIsStuned = false; }
+            foreach (Ally ally in Allies) { ally.HasAttackedThisTurnOrIsStuned = false; }
         }
         print(res ? "This is the end of the allies' turn !" : "You can attack with at least another ally.");
         return res;

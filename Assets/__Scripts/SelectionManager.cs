@@ -45,17 +45,38 @@ public class SelectionManager : MonoBehaviour
                 {
                     if (_selectedCharacter is Ally)
                     {
-                        if (_attackType == AttackType.Attack )
-                            _selectedCharacter.Attack(character);
-                        else if (_attackType == AttackType.Freeze  )
-                            _selectedCharacter.Regen(character);
-                        else if (_attackType == AttackType.Regen  )
-                            _selectedCharacter.Regen(character);
-                        else if (_attackType == AttackType.Critical  )
-                            _selectedCharacter.Regen(character);
-                        else if (_attackType == AttackType.AnimSpell)
-                            _selectedCharacter.Ulti(character);
-                        
+                        switch (_attackType)
+                        {
+                            case AttackType.Attack:
+                                _selectedCharacter.Attack(character);
+                                break;
+                            case AttackType.Freeze:
+                                _selectedCharacter.Freeze(character);
+                                break;
+                            case AttackType.Regen:
+                                _selectedCharacter.Regen(character);
+                                break;
+                            case AttackType.Critical:
+                                _selectedCharacter.Critical(character);
+                                break;
+                            case AttackType.TwoPlay:
+                                _selectedCharacter.TwoTimes(character);
+                                break;
+                            case AttackType.MinDamage:
+                                _selectedCharacter.MinPV(character);
+                                break;
+                            case AttackType.SkipTurn:
+                                _selectedCharacter.Skip(character);
+                                break;
+                            case AttackType.ConstantPV:
+                                break;
+                            case AttackType.AnimSpell:
+                                _selectedCharacter.Ulti(character);
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+                       
                     }
                 }
                 SelectCharacter(character);
