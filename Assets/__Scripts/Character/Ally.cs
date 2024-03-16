@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Ally : Character
 {
-    
     internal override void Attack(Character defender)
     {
         if (HasAttackedThisTurnOrIsStuned) return;
@@ -14,10 +13,14 @@ public class Ally : Character
             Debug.LogWarning("You should not hit your allies");
             return;
         }
+
         base.Attack(defender);
     }
 
-    internal override void SpecialAttack(Character defender)
+
+    #region SpecialAttack
+    
+    internal override void Freeze(Character defender)
     {
         if (HasAttackedThisTurnOrIsStuned) return;
         print(defender.GetType());
@@ -26,8 +29,53 @@ public class Ally : Character
             Debug.LogWarning("You should not hit your allies");
             return;
         }
-        base.SpecialAttack(defender);
+
+        base.Freeze(defender);
     }
+    
+    internal override void Regen(Character defender)
+    {
+        if (HasAttackedThisTurnOrIsStuned) return;
+        print(defender.GetType());
+        if (defender.GetType() == typeof(Enemy))
+        {
+            Debug.LogWarning("You should not heal your enemies");
+            return;
+        }
+
+        base.Regen(defender);
+    }
+    
+    internal override void Critical(Character defender)
+    {
+        if (HasAttackedThisTurnOrIsStuned) return;
+        print(defender.GetType());
+        if (defender.GetType() == typeof(Ally))
+        {
+            Debug.LogWarning("You should not hit your allies");
+            return;
+        }
+
+        base.Critical(defender);
+    }
+    
+    internal override void MinPV(Character defender)
+    {
+        if (HasAttackedThisTurnOrIsStuned) return;
+        print(defender.GetType());
+        if (defender.GetType() == typeof(Ally))
+        {
+            Debug.LogWarning("You should not hit your allies");
+            return;
+        }
+
+        base.MinPV(defender);
+    }
+
+    #endregion
+    
+
+    #region Ulti
 
     internal override void Ulti(Character defender)
     {
@@ -38,8 +86,37 @@ public class Ally : Character
             Debug.LogWarning("You should not hit your allies");
             return;
         }
+
         base.Ulti(defender);
     }
+
+    internal override void TwoTimes(Character defender)
+    {
+        if (HasAttackedThisTurnOrIsStuned) return;
+        print(defender.GetType());
+        if (defender.GetType() == typeof(Ally))
+        {
+            Debug.LogWarning("You should not hit your allies");
+            return;
+        }
+
+        base.TwoTimes(defender);
+    }
+
+    internal override void Skip(Character defender)
+    {
+        if (HasAttackedThisTurnOrIsStuned) return;
+        print(defender.GetType());
+        if (defender.GetType() == typeof(Ally))
+        {
+            Debug.LogWarning("You should not hit your allies");
+            return;
+        }
+
+        base.Skip(defender);
+    }
+
+    #endregion
 
     internal override void Hit(int damage)
     {
@@ -47,5 +124,4 @@ public class Ally : Character
         CharacterAnimator.SetTrigger("hit");
         Life = Mathf.Clamp(Life - damage, 0, LifeMax);
     }
-
 }

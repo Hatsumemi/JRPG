@@ -15,7 +15,8 @@ public class SelectionManager : MonoBehaviour
     public List<SelectionInstructions> SelectionInstructionsTexts;
     
     private Character _selectedCharacter;
-    private string _attackType;
+    private Ally _selectedAttack;
+    private AttackType _attackType;
     private void Awake()
     {
         if (_instance == null) _instance = this;
@@ -44,12 +45,17 @@ public class SelectionManager : MonoBehaviour
                 {
                     if (_selectedCharacter is Ally)
                     {
-                        if (_attackType == "Attack")
+                        if (_attackType == AttackType.Attack )
                             _selectedCharacter.Attack(character);
-                        else if (_attackType == "SpecialAttack")
-                            _selectedCharacter.SpecialAttack(character);
-                        else if (_attackType == "Ulti")
+                        else if (_attackType == AttackType.Freeze  )
+                            _selectedCharacter.Regen(character);
+                        else if (_attackType == AttackType.Regen  )
+                            _selectedCharacter.Regen(character);
+                        else if (_attackType == AttackType.Critical  )
+                            _selectedCharacter.Regen(character);
+                        else if (_attackType == AttackType.AnimSpell)
                             _selectedCharacter.Ulti(character);
+                        
                     }
                 }
                 SelectCharacter(character);
@@ -82,7 +88,7 @@ public class SelectionManager : MonoBehaviour
 
         Debug.Log("SetAttackMode");
 
-        _attackType = "Attack";
+        _attackType = _selectedCharacter.SpecialAttacks[0];
         CurrentSelectionMode = SelectionMode.EnemyToAttack;
         UI.UpdateUI(instructionText: GetSelectionInstructionsText(CurrentSelectionMode));
     }
@@ -93,7 +99,7 @@ public class SelectionManager : MonoBehaviour
 
         Debug.Log("SetSpecialAttackMode");
 
-        _attackType= "SpecialAttack";
+        _attackType = _selectedCharacter.SpecialAttacks[1];
         CurrentSelectionMode = SelectionMode.EnemyToAttack;
         UI.UpdateUI(instructionText: GetSelectionInstructionsText(CurrentSelectionMode));
     }
@@ -104,7 +110,7 @@ public class SelectionManager : MonoBehaviour
 
         Debug.Log("SetUltiMode");
 
-        _attackType = "Ulti";
+        _attackType = _selectedCharacter.SpecialAttacks[2];
         CurrentSelectionMode = SelectionMode.EnemyToAttack;
         UI.UpdateUI(instructionText: GetSelectionInstructionsText(CurrentSelectionMode));
     }
