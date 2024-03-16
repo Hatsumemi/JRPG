@@ -29,7 +29,7 @@ public class Ally : Character
             Debug.LogWarning("You should not hit your allies");
             return;
         }
-
+        
         base.Freeze(defender);
     }
     

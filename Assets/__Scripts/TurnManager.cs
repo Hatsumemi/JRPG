@@ -7,6 +7,7 @@ using UnityEngine.Serialization;
 
 public class TurnManager : MonoBehaviour
 {
+    private Ally Ally;
     private static TurnManager _instance;
     public static TurnManager Instance { get { return _instance; } }
     private void Awake()

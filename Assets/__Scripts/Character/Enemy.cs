@@ -7,7 +7,9 @@ public class Enemy : Character
     internal override void Attack(Character defender)
     {
         if (HasAttackedThisTurnOrIsStuned) return;
-        base.Attack(defender);
+        if (Character.IsFreeze == true) TurnManager.Instance.HasAttacked(this);
+        else
+            base.Attack(defender);
     }
 
     internal override void Hit(int damage)

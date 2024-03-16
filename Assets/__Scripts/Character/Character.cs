@@ -18,7 +18,7 @@ public class Character : MonoBehaviour
     private bool _hasAttackedThisTurnOrIsStuned = false;
     public AttackType[] SpecialAttacks;
 
-    private bool _isOccupied;
+    public static bool IsFreeze;
 
     public bool HasAttackedThisTurnOrIsStuned
     {
@@ -65,7 +65,7 @@ public class Character : MonoBehaviour
         else if (defender.GetType() == typeof(Enemy))
         {
             ((Enemy)defender).Hit(damage: SpecialAttackDamage);
-            ((Enemy)defender)._hasAttackedThisTurnOrIsStuned = true;
+            IsFreeze = true;
         }
     }
 
@@ -184,4 +184,6 @@ public class Character : MonoBehaviour
         if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: NormalAttackDamage);
         else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: NormalAttackDamage);
     }
+    
+    
 }
