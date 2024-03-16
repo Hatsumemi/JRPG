@@ -6,17 +6,21 @@ using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
 public class SelectionManager : MonoBehaviour
 {
-    private static SelectionManager _instance;
     public static SelectionManager Instance { get { return _instance; } }
-    private void Awake()
-    {
-        if (_instance == null) _instance = this;
-    }
+    private static SelectionManager _instance;
+    
     public Material OutlineMaterial, DefaultMaterial;
-    private Character _selectedCharacter;
     public GameUI UI;
     public SelectionMode CurrentSelectionMode;
     public List<SelectionInstructions> SelectionInstructionsTexts;
+    
+    private Character _selectedCharacter;
+    private string _attackType;
+    private void Awake()
+    {
+        if (_instance == null) _instance = this;
+        
+    }
 
     public void Update()
     {
@@ -31,16 +35,21 @@ public class SelectionManager : MonoBehaviour
             if (hit.collider != null)
             {
                 if (!hit.collider.TryGetComponent<Character>(out var character)) return;
+
+                Debug.Log($"Character target {character.name} ");
+
+                Debug.Log($"CurrentSelectionMode {CurrentSelectionMode}  ");
+
                 if (CurrentSelectionMode == SelectionMode.EnemyToAttack)
                 {
-                    if (_selectedCharacter.GetType() == typeof(Ally))
+                    if (_selectedCharacter is Ally)
                     {
-                        if (PlayerPrefs.GetString("attackType") == "Attack")
-                            ((Ally)_selectedCharacter).Attack(character);
-                        else if (PlayerPrefs.GetString("attackType") == "SpecialAttack")
-                            ((Ally)_selectedCharacter).SpecialAttack(character);
-                        else if (PlayerPrefs.GetString("attackType") == "Ulti")
-                            ((Ally)_selectedCharacter).Ulti(character);
+                        if (_attackType == "Attack")
+                            _selectedCharacter.Attack(character);
+                        else if (_attackType == "SpecialAttack")
+                            _selectedCharacter.SpecialAttack(character);
+                        else if (_attackType == "Ulti")
+                            _selectedCharacter.Ulti(character);
                     }
                 }
                 SelectCharacter(character);
@@ -70,7 +79,10 @@ public class SelectionManager : MonoBehaviour
     public void SetAttackMode()
     {
         if (_selectedCharacter == null || _selectedCharacter.GetType() == typeof(Enemy)) return;
-        PlayerPrefs.SetString("attackType", "Attack");
+
+        Debug.Log("SetAttackMode");
+
+        _attackType = "Attack";
         CurrentSelectionMode = SelectionMode.EnemyToAttack;
         UI.UpdateUI(instructionText: GetSelectionInstructionsText(CurrentSelectionMode));
     }
@@ -78,16 +90,22 @@ public class SelectionManager : MonoBehaviour
     public void SetSpecialAttackMode()
     {
         if (_selectedCharacter == null || _selectedCharacter.GetType() == typeof(Enemy)) return;
-        PlayerPrefs.SetString("attackType", "SpecialAttack");
+
+        Debug.Log("SetSpecialAttackMode");
+
+        _attackType= "SpecialAttack";
         CurrentSelectionMode = SelectionMode.EnemyToAttack;
         UI.UpdateUI(instructionText: GetSelectionInstructionsText(CurrentSelectionMode));
     }
-
+    
     public void SetUltiMode()
     {
         if (_selectedCharacter == null || _selectedCharacter.GetType() == typeof(Enemy)) return;
-        PlayerPrefs.SetString("attackType", "Ulti");
-        CurrentSelectionMode = SelectionMode.Default;
+
+        Debug.Log("SetUltiMode");
+
+        _attackType = "Ulti";
+        CurrentSelectionMode = SelectionMode.EnemyToAttack;
         UI.UpdateUI(instructionText: GetSelectionInstructionsText(CurrentSelectionMode));
     }
 

@@ -12,8 +12,8 @@ public class Enemy : Character
 
     internal override void Hit(int damage)
     {
-        base.Hit(PlayerPrefs.GetInt("damage"));
+        base.Hit(damage);
         CharacterAnimator.SetTrigger("hit");
-        Life = Mathf.Clamp(Life - PlayerPrefs.GetInt("damage"), 0, LifeMax);
+        Life = Mathf.Clamp(Life - damage, 0, LifeMax);
     }
 }

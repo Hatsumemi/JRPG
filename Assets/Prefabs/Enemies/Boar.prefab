@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 1626970490873369549}
   - component: {fileID: 6226405614043559445}
   m_Layer: 0
-  m_Name: Bat
+  m_Name: Boar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

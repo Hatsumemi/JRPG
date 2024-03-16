@@ -16,7 +16,7 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private List<Enemy> _enemies;
     private int _turnCount = 0;
     private bool _isEnemiesTurn = false;
-    // Start is called before the first frame update
+
     void Start()
     {
         _allies = new List<Ally>(FindObjectsByType<Ally>(FindObjectsSortMode.InstanceID));
