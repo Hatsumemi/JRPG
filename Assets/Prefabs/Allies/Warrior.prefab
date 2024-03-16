@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 2468045100961976591}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ac2bd1d26200efa469ed4f9997ef3aed, type: 2}
+  m_Controller: {fileID: 9100000, guid: b26928dc59ca8424fbd54bb0f47e9cae, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 2258244974461055499}
   - component: {fileID: 3399068399298910243}
   - component: {fileID: 4085489667597305622}
+  - component: {fileID: 6746222765708490579}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Untagged
@@ -292,4 +293,25 @@ MonoBehaviour:
   UltimateAttackDamage: 60
   CanAttackColor: {r: 1, g: 1, b: 1, a: 1}
   StandByColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  f: {fileID: 0}
+  SpecialAttacks: 
+--- !u!95 &6746222765708490579
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8841873232076443971}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b26928dc59ca8424fbd54bb0f47e9cae, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

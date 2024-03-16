@@ -179,7 +179,7 @@ Animator:
   m_GameObject: {fileID: 1571353915006737829}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b145acf4563adf0498870803ed7e413d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 57f6baf194f8c634da028b6ee3fba5f2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 2544784226389741928}
   - component: {fileID: 6514562956264513586}
   - component: {fileID: 1544705698832010631}
+  - component: {fileID: 7115378002979151355}
   m_Layer: 0
   m_Name: Paladin
   m_TagString: Untagged
@@ -292,4 +293,25 @@ MonoBehaviour:
   UltimateAttackDamage: 60
   CanAttackColor: {r: 1, g: 1, b: 1, a: 1}
   StandByColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  f: {fileID: 0}
+  SpecialAttacks: 
+--- !u!95 &7115378002979151355
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3755213925575692453}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 57f6baf194f8c634da028b6ee3fba5f2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
