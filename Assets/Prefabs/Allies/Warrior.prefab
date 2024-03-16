@@ -293,7 +293,7 @@ MonoBehaviour:
   UltimateAttackDamage: 60
   CanAttackColor: {r: 1, g: 1, b: 1, a: 1}
   StandByColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  SpecialAttacks: 
+  SpecialAttacks: 000000000300000004000000
 --- !u!95 &6746222765708490579
 Animator:
   serializedVersion: 5
