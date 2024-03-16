@@ -3660,7 +3660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e444f4af0c3ae884bb9277e776d77be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _allies: []
+  Allies: []
   _enemies: []
 --- !u!114 &1806575491
 MonoBehaviour:
