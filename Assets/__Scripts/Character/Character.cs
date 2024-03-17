@@ -52,9 +52,7 @@ public class Character : MonoBehaviour
 
         TurnManager.Instance.HasAttacked(this);
         
-        if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: NormalAttackDamage);
-        else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: NormalAttackDamage);
-        //IsIdleBase(defender);
+        StartCoroutine(IsIdleBase(defender));
     }
 
     #region SpecialAttack
@@ -66,7 +64,7 @@ public class Character : MonoBehaviour
 
         TurnManager.Instance.HasAttacked(this);
         
-        IsIdleSpecialFreeze(defender);
+        StartCoroutine(IsIdleSpecialFreeze(defender));
     }
 
     virtual internal void Regen(Character defender)
@@ -76,7 +74,7 @@ public class Character : MonoBehaviour
 
         TurnManager.Instance.HasAttacked(this);
 
-        IsIdleSpecialRegen(defender);
+        StartCoroutine(IsIdleSpecialRegen(defender));
     }
 
     virtual internal void Critical(Character defender)
@@ -86,7 +84,7 @@ public class Character : MonoBehaviour
 
         TurnManager.Instance.HasAttacked(this);
 
-        IsIdleSpecial(defender);
+        StartCoroutine(IsIdleSpecial(defender));
     }
 
     virtual internal void MinPV(Character defender)
@@ -96,7 +94,7 @@ public class Character : MonoBehaviour
 
         TurnManager.Instance.HasAttacked(this);
 
-        IsIdleSpecial(defender);
+        StartCoroutine(IsIdleSpecial(defender));
     }
 
     virtual internal void ConstantPV(Character defender)
@@ -106,7 +104,7 @@ public class Character : MonoBehaviour
 
         TurnManager.Instance.HasAttacked(this);
 
-        IsIdleSpecial(defender);
+        StartCoroutine(IsIdleSpecial(defender));
     }
 
     #endregion
@@ -121,7 +119,7 @@ public class Character : MonoBehaviour
 
         TurnManager.Instance.HasAttacked(this);
 
-        IsIdleUlti(defender);
+        StartCoroutine(IsIdleUlti(defender));
     }
 
     virtual internal void TwoTimes(Character defender)
@@ -156,52 +154,47 @@ public class Character : MonoBehaviour
 
     #endregion
     
-    private void IsIdleBase(Character defender)
+    IEnumerator IsIdleBase(Character defender)
     {
-        if (CharacterAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle")
-        {
-            if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: NormalAttackDamage);
-            else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: NormalAttackDamage);
-        }
+        yield return new WaitForSeconds(CharacterAnimator.runtimeAnimatorController.animationClips.Length);
+        if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: NormalAttackDamage);
+        else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: NormalAttackDamage);
+        
     }
     
-    private void IsIdleSpecial(Character defender)
+    IEnumerator IsIdleSpecial(Character defender)
     {
-        if (CharacterAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle")
-        {
-            if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: SpecialAttackDamage);
-            else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: SpecialAttackDamage);
-        }
+        yield return new WaitForSeconds(CharacterAnimator.runtimeAnimatorController.animationClips.Length);
+        if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: SpecialAttackDamage);
+        else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: SpecialAttackDamage);
+        
     }
-    private void IsIdleSpecialFreeze(Character defender)
+    IEnumerator IsIdleSpecialFreeze(Character defender)
     {
-        if (CharacterAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle")
+        yield return new WaitForSeconds(CharacterAnimator.runtimeAnimatorController.animationClips.Length);
+        if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: SpecialAttackDamage);
+        else if (defender.GetType() == typeof(Enemy))
         {
-            if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: SpecialAttackDamage);
-            else if (defender.GetType() == typeof(Enemy))
-            {
-                ((Enemy)defender).Hit(damage: SpecialAttackDamage);
-                IsFreeze = true;
-            }
+            ((Enemy)defender).Hit(damage: SpecialAttackDamage);
+            IsFreeze = true;
         }
+    
     }
         
-    private void IsIdleSpecialRegen(Character defender)
+    IEnumerator IsIdleSpecialRegen(Character defender)
     {
-        if (CharacterAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle")
-        {
-            if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: -SpecialAttackDamage);
-            else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: -SpecialAttackDamage);
-        }
+        yield return new WaitForSeconds(CharacterAnimator.runtimeAnimatorController.animationClips.Length);
+        if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: -SpecialAttackDamage);
+        else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: -SpecialAttackDamage);
+        
     }
     
-    private void IsIdleUlti(Character defender)
+    IEnumerator IsIdleUlti(Character defender)
     {
-        if (CharacterAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle")
-        {
-            if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: UltimateAttackDamage);
-            else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: UltimateAttackDamage);
-        }
+        yield return new WaitForSeconds(CharacterAnimator.runtimeAnimatorController.animationClips.Length);
+        if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: UltimateAttackDamage);
+        else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: UltimateAttackDamage);
+        
     }
 
     virtual internal void Hit(int damage)
@@ -219,15 +212,15 @@ public class Character : MonoBehaviour
     
     IEnumerator WaitToHit(Character defender)
     {
-        IsIdleUlti(defender);
+        StartCoroutine(IsIdleUlti(defender));
         yield return new WaitForSeconds(3);
-        IsIdleBase(defender);
+        StartCoroutine(IsIdleBase(defender));
     }
     IEnumerator WaitToFinish(Character defender)
     {
-        IsIdleBase(defender);
+        StartCoroutine(IsIdleBase(defender));
         yield return new WaitForSeconds(3);
-        IsIdleBase(defender);
+        StartCoroutine(IsIdleBase(defender));
     }
 
 }
