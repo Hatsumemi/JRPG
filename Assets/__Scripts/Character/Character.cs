@@ -48,7 +48,7 @@ public class Character : MonoBehaviour
     virtual internal void Attack(Character defender)
     {
         print($"{name} is attacking {defender.name} of type {defender.GetType()}");
-        CharacterAnimator.SetTrigger("attack");
+        CharacterAnimator.SetTrigger("AttackBase");
 
         TurnManager.Instance.HasAttacked(this);
 

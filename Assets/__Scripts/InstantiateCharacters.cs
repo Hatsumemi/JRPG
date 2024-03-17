@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,9 +10,13 @@ public class InstantiateCharacters : MonoBehaviour
     public List<GameObject> PrefabsEnnemies = new List<GameObject>();
     public GameObject[] PositionChars = new GameObject[2];
     public GameObject PositionEnemy;
+    public GameObject ParentCharacters;
+    public GameObject ParentEnemies;
+    public GameObject EnemyHere;
 
     private GameObject[] _characters = new GameObject[2];
-
+    private Enemy _Enemy;
+    private int _currentEnemy;
 
     void Start()
     {
@@ -19,12 +24,12 @@ public class InstantiateCharacters : MonoBehaviour
         {
             int nb = 1 + i;
             string nbStr = "char0" + nb.ToString();
-            _characters[i] = Instantiate(GetPrefab(PlayerPrefs.GetString(nbStr)));
+            _characters[i] = Instantiate(GetPrefab(PlayerPrefs.GetString(nbStr)),ParentCharacters.transform);
             _characters[i].transform.position = PositionChars[i].transform.position;
         }
 
-        GameObject enemy = Instantiate(PrefabsEnnemies[0]);
-        enemy.transform.position = PositionEnemy.transform.position;
+        EnemyHere = Instantiate(PrefabsEnnemies[0], ParentEnemies.transform);
+        EnemyHere.transform.position = PositionEnemy.transform.position;
     }
 
     private GameObject GetPrefab(string prefabName)
@@ -36,5 +41,14 @@ public class InstantiateCharacters : MonoBehaviour
         }
 
         return null;
+    }
+    
+    public void ChangeEnemy()
+    {
+        _currentEnemy++;
+        EnemyHere = Instantiate(PrefabsEnnemies[_currentEnemy]);
+        EnemyHere.transform.position = PositionEnemy.transform.position;
+        if (_currentEnemy > PrefabsEnnemies.Count)
+            _currentEnemy = -1;
     }
 }

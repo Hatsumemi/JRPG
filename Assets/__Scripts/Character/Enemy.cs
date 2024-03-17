@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : Character
 {
+    private InstantiateCharacters _instantiateCharacters;
     internal override void Attack(Character defender)
     {
         if (HasAttackedThisTurnOrIsStuned) return;
@@ -18,5 +19,11 @@ public class Enemy : Character
         CharacterAnimator.SetTrigger("hit");
         Life = Mathf.Clamp(Life - damage, 0, LifeMax);
         base.ShowHitPoint(damage);
+        if (Life <= 0)
+        {
+            Destroy(_instantiateCharacters.EnemyHere);
+            _instantiateCharacters.ChangeEnemy();
+        }
+           
     }
 }

@@ -37,3 +37,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Art/AnimBase/Bowman/SpecialAttack.anim
+Assets/Art/AnimBase/Bowman/SpecialAttack.anim.meta
+Assets/Art/AnimBase/Bowman/Ulti.anim
+Assets/Art/AnimBase/Bowman/Ulti.anim.meta
