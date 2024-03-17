@@ -21,7 +21,7 @@ public class Enemy : Character
         base.ShowHitPoint(damage);
         if (Life <= 0)
         {
-            Destroy(_instantiateCharacters.EnemyHere);
+            Destroy(GameObject.Find(_instantiateCharacters.EnemyName));
             _instantiateCharacters.ChangeEnemy();
         }
            

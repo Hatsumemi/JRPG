@@ -51,9 +51,10 @@ public class Character : MonoBehaviour
         CharacterAnimator.SetTrigger("AttackBase");
 
         TurnManager.Instance.HasAttacked(this);
-
+        
         if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: NormalAttackDamage);
         else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: NormalAttackDamage);
+        //IsIdleBase(defender);
     }
 
     #region SpecialAttack
@@ -61,61 +62,51 @@ public class Character : MonoBehaviour
     virtual internal void Freeze(Character defender)
     {
         print($"{name} is using their special attack {defender.name} of type {defender.GetType()}");
-        CharacterAnimator.SetTrigger("special");
+        CharacterAnimator.SetTrigger("SpecialAttack");
 
         TurnManager.Instance.HasAttacked(this);
-
         
-        if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: SpecialAttackDamage);
-        else if (defender.GetType() == typeof(Enemy))
-        {
-            ((Enemy)defender).Hit(damage: SpecialAttackDamage);
-            IsFreeze = true;
-        }
+        IsIdleSpecialFreeze(defender);
     }
 
     virtual internal void Regen(Character defender)
     {
         print($"{name} is using their special attack {defender.name} of type {defender.GetType()}");
-        CharacterAnimator.SetTrigger("special");
+        CharacterAnimator.SetTrigger("SpecialAttack");
 
         TurnManager.Instance.HasAttacked(this);
 
-        if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: -20);
-        else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: -20);
+        IsIdleSpecialRegen(defender);
     }
 
     virtual internal void Critical(Character defender)
     {
         print($"{name} is using their special attack {defender.name} of type {defender.GetType()}");
-        CharacterAnimator.SetTrigger("special");
+        CharacterAnimator.SetTrigger("SpecialAttack");
 
         TurnManager.Instance.HasAttacked(this);
 
-        if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: SpecialAttackDamage);
-        else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: SpecialAttackDamage);
+        IsIdleSpecial(defender);
     }
 
     virtual internal void MinPV(Character defender)
     {
         print($"{name} is using their special attack {defender.name} of type {defender.GetType()}");
-        CharacterAnimator.SetTrigger("special");
+        CharacterAnimator.SetTrigger("SpecialAttack");
 
         TurnManager.Instance.HasAttacked(this);
 
-        if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: SpecialAttackDamage);
-        else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: SpecialAttackDamage);
+        IsIdleSpecial(defender);
     }
 
     virtual internal void ConstantPV(Character defender)
     {
         print($"{name} is using their special attack {defender.name} of type {defender.GetType()}");
-        CharacterAnimator.SetTrigger("special");
+        CharacterAnimator.SetTrigger("SpecialAttack");
 
         TurnManager.Instance.HasAttacked(this);
 
-        if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: SpecialAttackDamage);
-        else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: SpecialAttackDamage);
+        IsIdleSpecial(defender);
     }
 
     #endregion
@@ -126,18 +117,17 @@ public class Character : MonoBehaviour
     virtual internal void Ulti(Character defender)
     {
         print($"{name} is using their ult {defender.name} of type {defender.GetType()}");
-        CharacterAnimator.SetTrigger("ult");
+        CharacterAnimator.SetTrigger("Ulti");
 
         TurnManager.Instance.HasAttacked(this);
 
-        if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: UltimateAttackDamage);
-        else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: UltimateAttackDamage);
+        IsIdleUlti(defender);
     }
 
     virtual internal void TwoTimes(Character defender)
     {
         print($"{name} is using their ult {defender.name} of type {defender.GetType()}");
-        CharacterAnimator.SetTrigger("ult");
+        CharacterAnimator.SetTrigger("Ulti");
 
 
         TurnManager.Instance.HasAttacked(this);
@@ -150,7 +140,7 @@ public class Character : MonoBehaviour
     {
         
         print($"{name} is using their ult {defender.name} of type {defender.GetType()}");
-        CharacterAnimator.SetTrigger("ult");
+        CharacterAnimator.SetTrigger("Ulti");
 
         TurnManager.Instance.HasAttacked(this);
         for (int i = 0; i < TurnManager.Instance.Allies.Count; i++)
@@ -165,7 +155,54 @@ public class Character : MonoBehaviour
     }
 
     #endregion
-
+    
+    private void IsIdleBase(Character defender)
+    {
+        if (CharacterAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle")
+        {
+            if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: NormalAttackDamage);
+            else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: NormalAttackDamage);
+        }
+    }
+    
+    private void IsIdleSpecial(Character defender)
+    {
+        if (CharacterAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle")
+        {
+            if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: SpecialAttackDamage);
+            else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: SpecialAttackDamage);
+        }
+    }
+    private void IsIdleSpecialFreeze(Character defender)
+    {
+        if (CharacterAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle")
+        {
+            if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: SpecialAttackDamage);
+            else if (defender.GetType() == typeof(Enemy))
+            {
+                ((Enemy)defender).Hit(damage: SpecialAttackDamage);
+                IsFreeze = true;
+            }
+        }
+    }
+        
+    private void IsIdleSpecialRegen(Character defender)
+    {
+        if (CharacterAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle")
+        {
+            if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: -SpecialAttackDamage);
+            else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: -SpecialAttackDamage);
+        }
+    }
+    
+    private void IsIdleUlti(Character defender)
+    {
+        if (CharacterAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle")
+        {
+            if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: UltimateAttackDamage);
+            else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: UltimateAttackDamage);
+        }
+    }
 
     virtual internal void Hit(int damage)
     {
@@ -182,20 +219,15 @@ public class Character : MonoBehaviour
     
     IEnumerator WaitToHit(Character defender)
     {
-        if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: UltimateAttackDamage);
-        else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: UltimateAttackDamage);
+        IsIdleUlti(defender);
         yield return new WaitForSeconds(3);
-        if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: NormalAttackDamage);
-        else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: NormalAttackDamage);
+        IsIdleBase(defender);
     }
     IEnumerator WaitToFinish(Character defender)
     {
-        if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: NormalAttackDamage);
-        else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: NormalAttackDamage);
+        IsIdleBase(defender);
         yield return new WaitForSeconds(3);
-        if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: NormalAttackDamage);
-        else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: NormalAttackDamage);
+        IsIdleBase(defender);
     }
-    
-    
+
 }

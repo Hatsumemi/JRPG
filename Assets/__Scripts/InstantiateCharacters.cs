@@ -13,6 +13,7 @@ public class InstantiateCharacters : MonoBehaviour
     public GameObject ParentCharacters;
     public GameObject ParentEnemies;
     public GameObject EnemyHere;
+    public string EnemyName;
 
     private GameObject[] _characters = new GameObject[2];
     private Enemy _Enemy;
@@ -29,6 +30,7 @@ public class InstantiateCharacters : MonoBehaviour
         }
 
         EnemyHere = Instantiate(PrefabsEnnemies[0], ParentEnemies.transform);
+        EnemyName = EnemyHere.name;
         EnemyHere.transform.position = PositionEnemy.transform.position;
     }
 
@@ -48,7 +50,7 @@ public class InstantiateCharacters : MonoBehaviour
         _currentEnemy++;
         EnemyHere = Instantiate(PrefabsEnnemies[_currentEnemy]);
         EnemyHere.transform.position = PositionEnemy.transform.position;
-        if (_currentEnemy > PrefabsEnnemies.Count)
+        if (_currentEnemy == PrefabsEnnemies.Count)
             _currentEnemy = -1;
     }
 }
