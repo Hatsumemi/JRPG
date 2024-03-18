@@ -29,7 +29,7 @@ public class InstantiateCharacters : MonoBehaviour
             _characters[i].transform.position = PositionChars[i].transform.position;
         }
 
-        EnemyHere = Instantiate(PrefabsEnnemies[0], ParentEnemies.transform);
+        EnemyHere = Instantiate(GetPrefab(PlayerPrefs.GetString("Enemy")), ParentEnemies.transform);
         EnemyName = EnemyHere.name;
         EnemyHere.transform.position = PositionEnemy.transform.position;
     }
@@ -45,12 +45,4 @@ public class InstantiateCharacters : MonoBehaviour
         return null;
     }
     
-    public void ChangeEnemy()
-    {
-        _currentEnemy++;
-        EnemyHere = Instantiate(PrefabsEnnemies[_currentEnemy]);
-        EnemyHere.transform.position = PositionEnemy.transform.position;
-        if (_currentEnemy == PrefabsEnnemies.Count)
-            _currentEnemy = -1;
-    }
 }

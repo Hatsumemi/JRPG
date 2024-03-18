@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class PauseMenu : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
     public Canvas Pause;
     public Canvas Settings;
@@ -59,6 +59,7 @@ public class PauseMenu : MonoBehaviour
         Fade.DOFade(1, 1);
         Pause.gameObject.SetActive(false);
         Time.timeScale = 1f;
+        StartCoroutine(WaitToMenu());
     }
 
     public void OnClickBack()
@@ -66,6 +67,7 @@ public class PauseMenu : MonoBehaviour
         Settings.gameObject.SetActive(false);
         Pause.gameObject.SetActive(true);
     }
+
 
     IEnumerator WaitToStart()
     {
@@ -84,4 +86,5 @@ public class PauseMenu : MonoBehaviour
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene("MainMenu");
     }
+
 }
