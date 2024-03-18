@@ -812,8 +812,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 685, y: 76.941}
-  m_SizeDelta: {x: 667.8824, y: 667.8824}
+  m_AnchoredPosition: {x: 607, y: 165}
+  m_SizeDelta: {x: 561.3987, y: 561.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &624462220
 MonoBehaviour:
@@ -835,7 +835,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: df9e27285bec9e34db863f09fef46cee, type: 3}
+  m_Sprite: {fileID: 8431547747865113625, guid: b63b908bf26acc04095688423364f81a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -945,8 +945,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 320, y: -109.94}
-  m_SizeDelta: {x: 667.8824, y: 667.8824}
+  m_AnchoredPosition: {x: 296, y: -88}
+  m_SizeDelta: {x: 553.9506, y: 460.3637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &662465476
 MonoBehaviour:
@@ -968,7 +968,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 37cc11733eed25843992f5f7c1358952, type: 3}
+  m_Sprite: {fileID: 1392863756, guid: 5120c41facc550447b7207ed395bdf6b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1962,11 +1962,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character01: {fileID: 662465474}
   Character02: {fileID: 624462218}
-  WarriorImage: {fileID: 21300000, guid: 37cc11733eed25843992f5f7c1358952, type: 3}
-  PaladinImage: {fileID: 21300000, guid: 95bd33d19ce06ae458b9d3000bb3da9d, type: 3}
-  WizzardImage: {fileID: 21300000, guid: b799f1506a220a34aa7d309c18208979, type: 3}
-  MageImage: {fileID: 21300000, guid: c552e79f1c6ff6c49a56a406a1eed4e4, type: 3}
-  BowmanImage: {fileID: 21300000, guid: df9e27285bec9e34db863f09fef46cee, type: 3}
+  WarriorImage: {fileID: 1392863756, guid: 5120c41facc550447b7207ed395bdf6b, type: 3}
+  PaladinImage: {fileID: -1076700245, guid: 057e1add86d597343927a05ca85d2254, type: 3}
+  WizzardImage: {fileID: -1173028972, guid: f044a6d106404184a91a7593e5cc1d26, type: 3}
+  MageImage: {fileID: -1998302719, guid: 87e4c6f12b10e704ba26d3de69bc3847, type: 3}
+  BowmanImage: {fileID: 8431547747865113625, guid: b63b908bf26acc04095688423364f81a, type: 3}
   Fade: {fileID: 1636645334}
 --- !u!4 &1843092929
 Transform:

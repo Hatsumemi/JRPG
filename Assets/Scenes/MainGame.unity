@@ -2881,12 +2881,12 @@ MonoBehaviour:
   - {fileID: 3755213925575692453, guid: fdf123012695c6a418a4ee9fd28a972e, type: 3}
   - {fileID: 3755213925575692453, guid: 755d840989ae44648a843bacf1bd29f9, type: 3}
   - {fileID: 3755213925575692453, guid: 7618a40834e9b0a46b2c9afb01a8aba8, type: 3}
-  PrefabsEnnemies:
+  PrefabsEnemies:
   - {fileID: 9064656913145065904, guid: c1026673e5e19c04d851760e36afaab0, type: 3}
-  - {fileID: 9064656913145065904, guid: b022d1d6478d32a4d914c50d64117fd8, type: 3}
   - {fileID: 9064656913145065904, guid: 1ebbf1666e48a38459765a871cfe57a9, type: 3}
   - {fileID: 9064656913145065904, guid: cbe8b0ca9262d884997098627940589a, type: 3}
   - {fileID: 9064656913145065904, guid: 2ff85dc6ba1fe4d4f8b428c971452bcb, type: 3}
+  - {fileID: 9064656913145065904, guid: b022d1d6478d32a4d914c50d64117fd8, type: 3}
   PositionChars:
   - {fileID: 1688614788}
   - {fileID: 750158876}
@@ -2894,7 +2894,6 @@ MonoBehaviour:
   ParentCharacters: {fileID: 1568839401}
   ParentEnemies: {fileID: 1649680272}
   EnemyHere: {fileID: 0}
-  EnemyName: 
 --- !u!1 &1624207879
 GameObject:
   m_ObjectHideFlags: 0
@@ -3616,6 +3615,7 @@ GameObject:
   - component: {fileID: 1806575489}
   - component: {fileID: 1806575490}
   - component: {fileID: 1806575491}
+  - component: {fileID: 1806575492}
   m_Layer: 0
   m_Name: _Scripts
   m_TagString: Untagged
@@ -3710,6 +3710,32 @@ MonoBehaviour:
   Pause: {fileID: 1046471542}
   Settings: {fileID: 1282639305}
   Fade: {fileID: 778864041}
+  Characters: {fileID: 1806575492}
+--- !u!114 &1806575492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806575486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca30dc55614c5d04b99050b938d15ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabHitPoint: {fileID: 0}
+  WhereToShowHP: {fileID: 0}
+  LifeMax: 100
+  Life: 100
+  SpritePortrait: {fileID: 0}
+  Visual: {fileID: 0}
+  CharacterAnimator: {fileID: 0}
+  NormalAttackDamage: 10
+  SpecialAttackDamage: 30
+  UltimateAttackDamage: 60
+  CanAttackColor: {r: 1, g: 1, b: 1, a: 1}
+  StandByColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  SpecialAttacks: 
 --- !u!1 &1863105257
 GameObject:
   m_ObjectHideFlags: 0

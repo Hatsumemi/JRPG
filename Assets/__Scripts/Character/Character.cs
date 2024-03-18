@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class Character : MonoBehaviour
@@ -24,6 +25,9 @@ public class Character : MonoBehaviour
     public AttackType[] SpecialAttacks;
 
     public static bool IsFreeze;
+    public static bool IsEnemyAlive = true;
+    public static int AllyDead = 0;
+    MenuManager menuManager;
 
     public bool HasAttackedThisTurnOrIsStuned
     {
@@ -166,8 +170,6 @@ public class Character : MonoBehaviour
     #endregion
     
     
-        
-    
 
     virtual internal void Hit(int damage)
     {
@@ -175,12 +177,6 @@ public class Character : MonoBehaviour
         CharacterAnimator.SetTrigger("Hit");
     }
 
-    public void ShowHitPoint(int damage)
-    {
-        GameObject prefab = GameObject.Instantiate(PrefabHitPoint);
-        prefab.transform.position = WhereToShowHP.transform.position;
-        prefab.GetComponent<Text>().DOFade(0, 0.8f);
-    }
     
     IEnumerator WaitToHit(Character defender)
     {
@@ -198,5 +194,6 @@ public class Character : MonoBehaviour
         if (defender.GetType() == typeof(Ally)) ((Ally)defender).Hit(damage: NormalAttackDamage);
         else if (defender.GetType() == typeof(Enemy)) ((Enemy)defender).Hit(damage: NormalAttackDamage);
     }
+
 
 }

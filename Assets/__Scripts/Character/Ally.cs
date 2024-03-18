@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class Ally : Character
 {
-    public int AllyDead = 0;
 
     private MenuManager menuManager;
     internal override void Attack(Character defender)
@@ -129,25 +128,10 @@ public class Ally : Character
         base.Hit(damage);
         CharacterAnimator.SetTrigger("hit");
         Life = Mathf.Clamp(Life - damage, 0, LifeMax);
-        base.ShowHitPoint(damage);
         if (Life <= 0)
         {
             AllyDead++;
         }
     }
 
-    private void AllAllyDead()
-    {
-        if (AllyDead == 2)
-        {
-            menuManager.Fade.gameObject.SetActive(true);
-            menuManager.Fade.DOFade(1, 1);
-            StartCoroutine(WaitToEnd());
-        }
-    }
-    IEnumerator WaitToEnd()
-    {
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("Defeat");
-    }
 }

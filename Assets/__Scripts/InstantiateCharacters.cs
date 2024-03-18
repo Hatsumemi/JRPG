@@ -7,17 +7,14 @@ using UnityEngine.Serialization;
 public class InstantiateCharacters : MonoBehaviour
 {
     public List<GameObject> PrefabsChara = new List<GameObject>();
-    public List<GameObject> PrefabsEnnemies = new List<GameObject>();
+    public List<GameObject> PrefabsEnemies = new List<GameObject>();
     public GameObject[] PositionChars = new GameObject[2];
     public GameObject PositionEnemy;
     public GameObject ParentCharacters;
     public GameObject ParentEnemies;
     public GameObject EnemyHere;
-    public string EnemyName;
 
     private GameObject[] _characters = new GameObject[2];
-    private Enemy _Enemy;
-    private int _currentEnemy;
 
     void Start()
     {
@@ -29,9 +26,9 @@ public class InstantiateCharacters : MonoBehaviour
             _characters[i].transform.position = PositionChars[i].transform.position;
         }
 
-        EnemyHere = Instantiate(GetPrefab(PlayerPrefs.GetString("Enemy")), ParentEnemies.transform);
-        EnemyName = EnemyHere.name;
+        EnemyHere = Instantiate(GetPrefabEnemy(PlayerPrefs.GetString("Enemy")), ParentEnemies.transform);
         EnemyHere.transform.position = PositionEnemy.transform.position;
+        EnemyHere.GetComponent<Enemy>().InstantiateCharacters = this;
     }
 
     private GameObject GetPrefab(string prefabName)
@@ -44,5 +41,16 @@ public class InstantiateCharacters : MonoBehaviour
 
         return null;
     }
-    
+
+    private GameObject GetPrefabEnemy(string prefabName)
+    {
+        foreach (var prefab in PrefabsEnemies)
+        {
+            if (prefab.name == prefabName)
+                return prefab;
+        }
+
+        return null;
+    }
+
 }

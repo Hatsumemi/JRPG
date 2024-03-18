@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Enemy : Character
 {
-    private MenuManager menuManager;
-    private InstantiateCharacters _instantiateCharacters;
+    public InstantiateCharacters InstantiateCharacters;
+
     internal override void Attack(Character defender)
     {
         if (HasAttackedThisTurnOrIsStuned) return;
@@ -25,19 +25,12 @@ public class Enemy : Character
         base.Hit(damage);
         CharacterAnimator.SetTrigger("hit");
         Life = Mathf.Clamp(Life - damage, 0, LifeMax);
-        base.ShowHitPoint(damage);
         if (Life <= 0)
         {
-            menuManager.Fade.gameObject.SetActive(true);
-            menuManager.Fade.DOFade(1, 1);
-            StartCoroutine(WaitToEnd());
+            IsEnemyAlive = false;
         }
           
     }
 
-    IEnumerator WaitToEnd()
-    {
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("Victory");
-    }
+    
 }

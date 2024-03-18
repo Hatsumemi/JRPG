@@ -284,8 +284,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabHitPoint: {fileID: 7435507357748056878, guid: e531c9908c684b94b855c3279216d8f2, type: 3}
   WhereToShowHP: {fileID: 0}
-  LifeMax: 100
-  Life: 100
+  LifeMax: 1000
+  Life: 1000
   SpritePortrait: {fileID: 3800871404644214177, guid: aae616819c34de14996632200276507c, type: 3}
   Visual: {fileID: 7653876479534562199}
   CharacterAnimator: {fileID: 9122667785458126137}
@@ -295,3 +295,4 @@ MonoBehaviour:
   CanAttackColor: {r: 1, g: 1, b: 1, a: 1}
   StandByColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   SpecialAttacks: 
+  InstantiateCharacters: {fileID: 0}

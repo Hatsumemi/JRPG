@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.PlayerLoop;
 
 public class MenuManager : MonoBehaviour
 {
     public Canvas Pause;
     public Canvas Settings;
     public Image Fade;
+    public Character Characters;
 
     private void Start()
     {
@@ -24,6 +26,18 @@ public class MenuManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             OnClickPause();
+        }
+        if (Enemy.IsEnemyAlive == false)
+        {
+            Fade.gameObject.SetActive(true);
+            Fade.DOFade(1, 1);
+            StartCoroutine(WaitToEnd02());
+        }
+        if (Ally.AllyDead == 2)
+        {
+            Fade.gameObject.SetActive(true);
+            Fade.DOFade(1, 1);
+            StartCoroutine(WaitToEnd02());
         }
     }
     public void OnClickPause()
@@ -85,6 +99,18 @@ public class MenuManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene("MainMenu");
+    }
+
+    IEnumerator WaitToEnd()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("Defeat");
+    }
+
+    IEnumerator WaitToEnd02()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("Victory");
     }
 
 }

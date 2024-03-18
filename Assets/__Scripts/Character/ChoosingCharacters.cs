@@ -135,6 +135,6 @@ public class ChoosingCharacters : MonoBehaviour
     IEnumerator WaitForStart()
     {
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene("EnemyChoice");
     }
 }
